@@ -14,10 +14,10 @@ namespace PetShop.Data
         {
         }
 
-        public virtual DbSet<Animals> Animals { get; set; }
-        public virtual DbSet<Cages> Cages { get; set; }
-        public virtual DbSet<Clients> Clients { get; set; }
-        public virtual DbSet<Employees> Employees { get; set; }
+        public virtual DbSet<Animal> Animals { get; set; }
+        public virtual DbSet<Cage> Cages { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Food> Food { get; set; }
         public virtual DbSet<Sales> Sales { get; set; }
 
@@ -34,7 +34,7 @@ namespace PetShop.Data
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.3-servicing-35854");
 
-            modelBuilder.Entity<Animals>(entity =>
+            modelBuilder.Entity<Animal>(entity =>
             {
                 entity.ToTable("Animals", "dbo");
 
@@ -74,7 +74,7 @@ namespace PetShop.Data
                     .HasConstraintName("FK_animals_food");
             });
 
-            modelBuilder.Entity<Cages>(entity =>
+            modelBuilder.Entity<Cage>(entity =>
             {
                 entity.ToTable("Cages", "dbo");
 
@@ -86,7 +86,7 @@ namespace PetShop.Data
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Clients>(entity =>
+            modelBuilder.Entity<Client>(entity =>
             {
                 entity.ToTable("Clients", "dbo");
 
@@ -108,7 +108,7 @@ namespace PetShop.Data
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Employees>(entity =>
+            modelBuilder.Entity<Employee>(entity =>
             {
                 entity.ToTable("Employees", "dbo");
 

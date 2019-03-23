@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace PetShop.Data.Models
 {
-    public partial class Clients
+    public partial class Client
     {
-        public Clients()
+        public Client()
         {
             Sales = new HashSet<Sales>();
         }

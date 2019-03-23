@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace PetShop.Data.Models
 {
-    public partial class Cages
+    public partial class Cage
     {
-        public Cages()
+        public Cage()
         {
-            Animals = new HashSet<Animals>();
+            Animals = new HashSet<Animal>();
         }
 
         public int Id { get; set; }
         public string CageType { get; set; }
         public int Capacity { get; set; }
 
-        public virtual ICollection<Animals> Animals { get; set; }
+        public virtual ICollection<Animal> Animals { get; set; }
     }
 }

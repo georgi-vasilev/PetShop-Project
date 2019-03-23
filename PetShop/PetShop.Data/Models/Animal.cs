@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace PetShop.Data.Models
 {
-    public partial class Animals
+    public partial class Animal
     {
-        public Animals()
+        public Animal()
         {
             Sales = new HashSet<Sales>();
         }
@@ -18,7 +18,7 @@ namespace PetShop.Data.Models
         public int FoodId { get; set; }
         public int CageId { get; set; }
 
-        public virtual Cages Cage { get; set; }
+        public virtual Cage Cage { get; set; }
         public virtual Food Food { get; set; }
         public virtual ICollection<Sales> Sales { get; set; }
     }

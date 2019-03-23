@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace PetShop.Data.Models
 {
-    public partial class Employees
+    public partial class Employee
     {
-        public Employees()
+        public Employee()
         {
             Sales = new HashSet<Sales>();
         }

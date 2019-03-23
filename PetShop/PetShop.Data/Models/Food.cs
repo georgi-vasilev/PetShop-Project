@@ -7,7 +7,7 @@ namespace PetShop.Data.Models
     {
         public Food()
         {
-            Animals = new HashSet<Animals>();
+            Animals = new HashSet<Animal>();
         }
 
         public int Id { get; set; }
@@ -15,6 +15,6 @@ namespace PetShop.Data.Models
         public string Brand { get; set; }
         public decimal Quantity { get; set; }
 
-        public virtual ICollection<Animals> Animals { get; set; }
+        public virtual ICollection<Animal> Animals { get; set; }
     }
 }
