@@ -10,10 +10,7 @@ namespace PetShop.App
         {
             using (var context = new PetShopContext())
             {
-                var animal = context.Animals.FirstOrDefault();
-
-                Console.WriteLine(animal.Specie);
-                Console.WriteLine(animal.Food.FoodType);
+                MainMenu.Start();
             }
         }
     }
