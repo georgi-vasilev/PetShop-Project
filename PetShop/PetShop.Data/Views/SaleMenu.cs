@@ -18,6 +18,7 @@ namespace PetShop.Data.Views
             sale.ClientId = int.Parse(Console.ReadLine());
             Console.WriteLine("Enter AnimalID:");
             sale.AnimalId = int.Parse(Console.ReadLine());
+            sale.SaleDate = DateTime.Now;
             Console.WriteLine("Please wait...");
             saleController.Sale(sale);
         }
