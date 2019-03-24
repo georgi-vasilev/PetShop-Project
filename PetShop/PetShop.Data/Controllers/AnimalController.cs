@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace PetShop.Data.Controllers
 {
-    class AnimalsController
+    class AnimalController
     {
 
         private PetShopContext petShopContext;
