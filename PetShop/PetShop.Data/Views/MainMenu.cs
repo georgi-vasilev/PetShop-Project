@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using PetShop.Data.Controllers;
@@ -37,7 +37,7 @@ namespace PetShop.Data.Views
                     AddMenu.Add();
                     break;
                 case 2:
-                    Console.WriteLine("Menu 2");
+                    SaleMenu.MakeSale();
                     break;
                 case 3:
                     RemoveMenu.Remove();
