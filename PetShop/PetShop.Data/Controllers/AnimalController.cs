@@ -6,17 +6,17 @@ using System.Linq;
 
 namespace PetShop.Data.Controllers
 {
-    public class AnimalsController
+    public class AnimalController
     {
 
         private PetShopContext petShopContext;
 
-        public AnimalsController()
+        public AnimalController()
         {
             this.petShopContext = new PetShopContext();
         }
 
-        public AnimalsController(PetShopContext context)
+        public AnimalController(PetShopContext context)
         {
             this.petShopContext = context;
         }
