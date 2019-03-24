@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PetShop.Data.Controllers;
+using PetShop.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -35,19 +37,44 @@ namespace PetShop.Data.Views
             switch (menu)
             {
                 case 1:
-                    Console.WriteLine("Enter ID:");
-                    Console.ReadLine();
-                    Console.WriteLine("Record Removed, press any key to continue.");
-                    Console.ReadLine();
+                    var employee = new Employee();
+                    var employeeController = new EmployeeController();
+                    Console.WriteLine("Enter EmployeeID:");
+                    employee.Id = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Please wait...");
+                    employeeController.Remove(employee);
                     break;
                 case 2:
-                    Console.WriteLine("Menu 2");
+                    var animal = new Animal();
+                    var animalController = new AnimalController();
+                    Console.WriteLine("Enter AnimalID:");
+                    animal.Id = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Please wait...");
+                    animalController.RemoveAnimal(animal);
                     break;
                 case 3:
-                    Console.WriteLine("Menu 3");
+                    var client = new Client();
+                    var clientController = new ClientController();
+                    Console.WriteLine("Enter ClientID:");
+                    client.Id = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Please wait...");
+                    clientController.RemoveClient(client);
                     break;
                 case 4:
-                    Console.WriteLine("Menu 4");
+                    var cage = new Cage();
+                    var cageController = new CageController();
+                    Console.WriteLine("Enter CageID:");
+                    cage.Id = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Please wait...");
+                    cageController.RemoveCage(cage);
+                    break;
+                case 5:
+                    var food = new Food();
+                    var foodController = new FoodController();
+                    Console.WriteLine("Enter FoodID:");
+                    food.Id = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Please wait...");
+                    foodController.RemoveFood(food);
                     break;
                 default:
                     Console.WriteLine("Invalid Number!");
