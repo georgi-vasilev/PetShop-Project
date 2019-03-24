@@ -6,14 +6,24 @@ using System.Linq;
 
 namespace PetShop.Data.Controllers
 {
-    class AnimalsController
+    public class AnimalsController
     {
 
         private PetShopContext petShopContext;
 
+        public AnimalsController()
+        {
+            this.petShopContext = new PetShopContext();
+        }
+
+        public AnimalsController(PetShopContext context)
+        {
+            this.petShopContext = context;
+        }
+
         public void AddAnimal(Models.Animal animal)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 petShopContext.Animals.Add(animal);
                 petShopContext.SaveChanges();
@@ -22,7 +32,7 @@ namespace PetShop.Data.Controllers
 
         public void RemoveAnimal(Models.Animal animal /*int id*/)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 var delAnimal = petShopContext.Animals.Find(animal.Id);
                 if (delAnimal != null)
@@ -35,7 +45,7 @@ namespace PetShop.Data.Controllers
 
         public void UpdateAnimal(Models.Animal animal)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 var update = petShopContext.Animals.Find(animal.Id);
                 if (update != null)
@@ -48,7 +58,7 @@ namespace PetShop.Data.Controllers
 
         public List<Animal> SearchByTagsAnimal(string specie, string breed)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 return petShopContext.Animals.Where(x => x.Breed == breed && x.Specie == specie).ToList();
 
@@ -58,7 +68,7 @@ namespace PetShop.Data.Controllers
 
         public List<Animal> GetAllAnimals()
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 return petShopContext.Animals.ToList();
             }

@@ -12,6 +12,15 @@ namespace PetShop.Data.Controllers
         private PetShopContext petShopContext;
 
 
-
+       /* private PetShopContext petShopContext;
+        public void AddFood(Models.Food food)
+        {
+            var opa = 0;
+            using (petShopContext = new PetShopContext())
+            {  
+                petShopContext.Food.Add(food);
+                petShopContext.SaveChanges();
+            }
+        }*/
     }
 }

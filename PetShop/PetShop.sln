@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShop.App", "PetShop.App\PetShop.App.csproj", "{14A4017C-1D40-4277-A74B-BEB7CB0C566D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetShop.App", "PetShop.App\PetShop.App.csproj", "{14A4017C-1D40-4277-A74B-BEB7CB0C566D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetShop.Data", "PetShop.Data\PetShop.Data.csproj", "{A5CD3FC9-6A56-47C5-9670-0070A288F505}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetShop.Data", "PetShop.Data\PetShop.Data.csproj", "{A5CD3FC9-6A56-47C5-9670-0070A288F505}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controllers.Test", "Controllers.Test\Controllers.Test.csproj", "{C8C7C5AA-B13E-41C7-84BF-A31BD26E6438}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A5CD3FC9-6A56-47C5-9670-0070A288F505}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5CD3FC9-6A56-47C5-9670-0070A288F505}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5CD3FC9-6A56-47C5-9670-0070A288F505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8C7C5AA-B13E-41C7-84BF-A31BD26E6438}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8C7C5AA-B13E-41C7-84BF-A31BD26E6438}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8C7C5AA-B13E-41C7-84BF-A31BD26E6438}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8C7C5AA-B13E-41C7-84BF-A31BD26E6438}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,8 +11,8 @@ namespace PetShop.Data.Models
         public int AnimalId { get; set; }
         public DateTime? SaleDate { get; set; }
 
-        public virtual Animals Animal { get; set; }
-        public virtual Clients Client { get; set; }
-        public virtual Employees Employee { get; set; }
+        public virtual Animal Animal { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }
