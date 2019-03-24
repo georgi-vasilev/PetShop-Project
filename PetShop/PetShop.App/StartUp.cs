@@ -1,4 +1,5 @@
 ﻿using PetShop.Data;
+using PetShop.Data.Views;
 using System;
 using System.Linq;
 
@@ -8,13 +9,7 @@ namespace PetShop.App
     {
         static void Main(string[] args)
         {
-            using (var context = new PetShopContext())
-            {
-                var animal = context.Animals.FirstOrDefault();
-
-                Console.WriteLine(animal.Specie);
-                Console.WriteLine(animal.Food.FoodType);
-            }
+            MainMenu.Start();
         }
     }
 }
