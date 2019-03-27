@@ -26,7 +26,7 @@ namespace Controllers.Test
 
 
         [Test]
-        public void AddAnimal_saves_an_animal_via_context()
+        public void AddAnimalSavesAnAnimalViaContext()
         {
             var mockSet = new Mock<DbSet<Animal>>();
 
