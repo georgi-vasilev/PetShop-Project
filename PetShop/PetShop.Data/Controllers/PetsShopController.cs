@@ -9,7 +9,7 @@ namespace PetShop.Data.Controllers
 {
     class PetsShopController
     {
-        private PetShopContext petShopContext;
+        /*private PetShopContext petShopContext;*/
 
 
        /* private PetShopContext petShopContext;

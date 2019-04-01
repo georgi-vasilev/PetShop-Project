@@ -50,7 +50,7 @@ namespace PetShop.Data.Views
                     Console.WriteLine("Enter AnimalID:");
                     animal.Id = int.Parse(Console.ReadLine());
                     Console.WriteLine("Please wait...");
-                    animalController.RemoveAnimal(animal);
+                    animalController.RemoveAnimal(animal.Id);
                     break;
                 case 3:
                     var client = new Client();

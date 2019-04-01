@@ -30,11 +30,11 @@ namespace PetShop.Data.Controllers
             }
         }
 
-        public void RemoveAnimal(Models.Animal animal /*int id*/)
+        public void RemoveAnimal(/*Models.Animal animal */int id)
         {
             using (petShopContext)
             {
-                var delAnimal = petShopContext.Animals.Find(animal.Id);
+                var delAnimal = petShopContext.Animals.FirstOrDefault(x=>x.Id==id);
                 if (delAnimal != null)
                 {
                     petShopContext.Animals.Remove(delAnimal);
