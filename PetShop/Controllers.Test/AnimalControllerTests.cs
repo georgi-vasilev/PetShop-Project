@@ -46,58 +46,58 @@ namespace Controllers.Test
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
 
-        [Test]
-        public void RemoveAnimalRemovesAnAnimalViaContext()
-        {
-            //var mockSet = new Mock<DbSet<Animal>>();
+      //  [Test]
+        //public void RemoveAnimalRemovesAnAnimalViaContext()
+        //{
+        //    //var mockSet = new Mock<DbSet<Animal>>();
 
-            //var mockContext = new Mock<PetShopContext>();
-            //mockContext.Setup(m => m.Animals).Returns(mockSet.Object);
-            //var service = new AnimalController(mockContext.Object);
-            //Animal animal = new Animal()
-            //{
-            //    Specie = "dog",
-            //    Breed = "aaaa"
+        //    //var mockContext = new Mock<PetShopContext>();
+        //    //mockContext.Setup(m => m.Animals).Returns(mockSet.Object);
+        //    //var service = new AnimalController(mockContext.Object);
+        //    //Animal animal = new Animal()
+        //    //{
+        //    //    Specie = "dog",
+        //    //    Breed = "aaaa"
 
-            //};
+        //    //};
 
-            //service.RemoveAnimal(animal);
+        //    //service.RemoveAnimal(animal);
 
-            //mockSet.Verify(m => m.Remove(It.IsAny<Animal>()), Times.Once());
-            //mockContext.Verify(m => m.SaveChanges(), Times.Once());
+        //    //mockSet.Verify(m => m.Remove(It.IsAny<Animal>()), Times.Once());
+        //    //mockContext.Verify(m => m.SaveChanges(), Times.Once());
 
-           /* var data = new List<Animal>
-            {
-                new Animal { Id=1, Specie="dog"   },
-                new Animal { Id=2, Specie="aaa" },
-                new Animal { Id=3, Specie="bbb" },
-            }.AsQueryable();
+        //    var data = new List<Animal>
+        //    {
+        //        new Animal { Id=1, Specie="dog"   },
+        //        new Animal { Id=2, Specie="aaa" },
+        //        new Animal { Id=3, Specie="bbb" },
+        //    }.AsQueryable();
 
-            var mockSet = new Mock<DbSet<Animal>>();
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+        //    var mockSet = new Mock<DbSet<Animal>>();
+        //    mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider).Returns(data.Provider);
+        //    mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression).Returns(data.Expression);
+        //    mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType).Returns(data.ElementType);
+        //    mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
 
-            var mockContext = new Mock<PetShopContext>();
-            mockContext.Setup(c => c.Animals).Returns(mockSet.Object);
+        //    var mockContext = new Mock<PetShopContext>();
+        //    mockContext.Setup(c => c.Animals).Returns(mockSet.Object);
 
-            var service = new AnimalController(mockContext.Object);
-            Animal animalForDelete = new Animal { Id = 1 };
+        //    var service = new AnimalController(mockContext.Object);
+        //    Animal animalForDelete = new Animal { Id = 1 };
 
-            service.
+        //    service.
 
-            // Assert.AreEqual(2, mockSet.Object.Count());
-
-
-            mockSet.Verify(m => m.Remove(It.IsAny<Animal>()), Times.Once());
-            mockContext.Verify(m => m.SaveChanges(), Times.Once());*/
+        //    Assert.AreEqual(2, mockSet.Object.Count());
 
 
+        //    mockSet.Verify(m => m.Remove(It.IsAny<Animal>()), Times.Once());
+        //    mockContext.Verify(m => m.SaveChanges(), Times.Once());
 
 
 
-        }
+
+
+        //}
 
         [Test]
         public void UpdateAnimalUpdatesAnAnimalViaContext()
@@ -119,6 +119,66 @@ namespace Controllers.Test
 
             mockSet.Verify(m => m.Update(It.IsAny<Animal>()), Times.Once());
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
+        }
+
+        [Test]
+        public void GetAllAnimal()
+        {
+            var data = new List<Animal>
+            {
+                new Animal { Specie = "dog" },
+                new Animal { Specie = "cat" },
+                new Animal { Specie = "parrrot" },
+            }.AsQueryable();
+
+            var mockSet = new Mock<DbSet<Animal>>();
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+
+            var mockContext = new Mock<PetShopContext>();
+            mockContext.Setup(s => s.Animals).Returns(mockSet.Object);
+
+            var service = new AnimalController(mockContext.Object);
+            var animalsFound = service.GetAllAnimals();
+
+            Assert.AreEqual(3, animalsFound.Count());
+            Assert.AreEqual("dog", animalsFound[0].Specie);
+            Assert.AreEqual("cat", animalsFound[1].Specie);
+            Assert.AreEqual("parrrot", animalsFound[2].Specie);
+
+
+        }
+
+        [Test]
+        public void SearchByTagsAnimal()
+        {
+            var data = new List<Animal>
+            {
+                new Animal { Specie = "dog" , Breed="NemOvcharka"},
+                new Animal { Breed = "Ovcharsko" , Specie="doggg"},
+                //new Animal { Specie = "parrrot" },
+            }.AsQueryable();
+
+            var mockSet = new Mock<DbSet<Animal>>();
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+
+            var mockContext = new Mock<PetShopContext>();
+            mockContext.Setup(s => s.Animals).Returns(mockSet.Object);
+
+            var service = new AnimalController(mockContext.Object);
+            var animalsFound = service.SearchByTagsAnimal("dog", "a");
+
+            Assert.AreEqual(1, animalsFound.Count());
+            Assert.AreEqual("dog", animalsFound[0].Specie);
+            //Assert.AreEqual("cat", animalsFound[1].Specie);
+            //Assert.AreEqual("parrrot", animalsFound[2].Specie);
+
+
         }
 
     }

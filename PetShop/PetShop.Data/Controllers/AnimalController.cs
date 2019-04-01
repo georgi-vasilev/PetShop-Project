@@ -107,6 +107,11 @@ namespace PetShop.Data.Controllers
 
 
         /*SPRAVKI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+        /// <summary>
+        /// Method to show animals which have same specie
+        /// </summary>
+        /// <param name="specie">Argument which is read from the console</param>
+        /// <returns>Found the same specie from animals</returns>
         public List<Animal> AllTheSameSpecies(string specie)
         {
             List<Animal> result = new List<Animal>();
@@ -117,6 +122,13 @@ namespace PetShop.Data.Controllers
             return result;
         }
 
+
+
+        /// <summary>
+        /// Method to show animals which have same breed
+        /// </summary>
+        /// <param name="breed">Argument which is read from the console</param>
+        /// <returns>Found the same breed from animals</returns>
         public List<Animal> AllTheSameBreed(string breed)
         {
             List<Animal> result = new List<Animal>();
@@ -127,6 +139,13 @@ namespace PetShop.Data.Controllers
             return result;
         }
 
+
+
+        /// <summary>
+        /// Method to show animals which have same sex
+        /// </summary>
+        /// <param name="sex">Argument which is read from the console</param>
+        /// <returns>Found the same sex from animals</returns>
         public List<Animal> AllTheSameSex(string sex)
         {
             List<Animal> result = new List<Animal>();
