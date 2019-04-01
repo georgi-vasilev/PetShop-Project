@@ -17,15 +17,6 @@ namespace Controllers.Test
     public class AnimalControllerTests
     {
         [Test]
-        public void TestMethod()
-        {
-            // TODO: Add your test code here
-            var answer = 42;
-            Assert.That(answer, Is.EqualTo(42), "Some useful error message");
-        }
-
-
-        [Test]
         public void AddAnimalSavesAnAnimalViaContext()
         {
             var mockSet = new Mock<DbSet<Animal>>();
@@ -36,8 +27,7 @@ namespace Controllers.Test
             Animal animal = new Animal()
             {
                 Specie = "dog",
-                Breed = "aaaa"
-              
+                Breed = "aaaa"  
             };
 
             service.AddAnimal(animal);
@@ -67,8 +57,5 @@ namespace Controllers.Test
             mockSet.Verify(m => m.Update(It.IsAny<Animal>()), Times.Once());
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
-
-
-
     }
 }
