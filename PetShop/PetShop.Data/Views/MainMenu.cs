@@ -5,8 +5,16 @@ using PetShop.Data.Controllers;
 
 namespace PetShop.Data.Views
 {
+    /// <summary>
+    /// This class contains a few methods to make the console
+    /// user friendly and display the main menu.
+    /// </summary>
     public class MainMenu
     {
+        /// <summary>
+        /// Function using do-while loop, in order to give the user
+        /// an option to choose what they want to do.
+        /// </summary>
         public static void Start()
         {
             int choice = 0;
@@ -20,6 +28,11 @@ namespace PetShop.Data.Views
             } while (choice!=0);
 
         }
+
+        /// <summary>
+        /// Function to visualize the possible options in the console
+        /// which user can use
+        /// </summary>
         public static void DisplayMenu()
         {
             Console.WriteLine("MAIN MENU");
@@ -29,6 +42,12 @@ namespace PetShop.Data.Views
             Console.WriteLine("4:Search");
             Console.WriteLine("0:End");
         }
+
+        /// <summary>
+        /// Function to redirect the user using switch operator.
+        /// </summary>
+        /// <param name="menu">The argument "menu" reads the given number from the console which is used
+        /// in the switch operator </param>
         public static void Redirect(int menu)
         {
             switch (menu)

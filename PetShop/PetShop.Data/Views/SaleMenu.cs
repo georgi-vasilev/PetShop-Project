@@ -6,8 +6,14 @@ using System.Text;
 
 namespace PetShop.Data.Views
 {
+    /// <summary>
+    /// This class gives us the option to sell something from our shop.
+    /// </summary>
     public class SaleMenu
     {
+        /// <summary>
+        /// The method creates a sale using some IDs and saves the data when the animal is sold.
+        /// </summary>
         public static void MakeSale()
         {
             var sale = new Sales();
