@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using PetShop.Data.Models;
 using System.Linq;
 
@@ -9,9 +7,22 @@ namespace PetShop.Data.Controllers
     /// <summary>
     /// Class which is used as controller for cage table.
     /// </summary>
-    class CageController
+    public class CageController
     {
         private PetShopContext petShopContext;
+
+        /// <summary>
+        /// Empty constructor of this class which create new PetShopContext.
+        /// </summary>
+        public CageController()
+        {
+            this.petShopContext = new PetShopContext();
+        }
+
+        public CageController(PetShopContext context)
+        {
+            this.petShopContext = context;
+        }
 
 
         /// <summary>
@@ -20,7 +31,7 @@ namespace PetShop.Data.Controllers
         /// <param name="cage">Argumet based on model used to add information in the database.</param>
         public void AddCage(Models.Cage cage)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 petShopContext.Cages.Add(cage);
                 petShopContext.SaveChanges();
@@ -34,7 +45,7 @@ namespace PetShop.Data.Controllers
         /// <param name="cage">Argumet based on model used to update information in the database.</param>
         public void UpdateCage(Models.Cage cage)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 var update = petShopContext.Cages.Find(cage.Id);
                 if (update != null)
@@ -52,7 +63,7 @@ namespace PetShop.Data.Controllers
         /// <param name="cage">Argumet based on model used to delete information in the database.</param>
         public void RemoveCage(Models.Cage cage /*int id*/)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 var delCage = petShopContext.Cages.Find(cage.Id);
                 if (delCage != null)
@@ -69,7 +80,7 @@ namespace PetShop.Data.Controllers
         /// <returns>Returns all cages information converted in list using LINQ and Lambda</returns>
         public List<Cage> GetAllCages()
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 return petShopContext.Cages.ToList();
             }

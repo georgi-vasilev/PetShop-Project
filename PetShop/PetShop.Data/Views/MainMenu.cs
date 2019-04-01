@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using PetShop.Data.Controllers;
 
 namespace PetShop.Data.Views
 {

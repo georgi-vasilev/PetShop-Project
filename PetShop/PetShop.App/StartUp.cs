@@ -1,7 +1,4 @@
-﻿using PetShop.Data;
-using PetShop.Data.Views;
-using System;
-using System.Linq;
+﻿using PetShop.Data.Views;
 
 namespace PetShop.App
 {

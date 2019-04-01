@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PetShop.Data
+﻿namespace PetShop.Data
 {
     /// <summary>
     /// Class connection which saves the connection string.

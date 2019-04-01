@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using PetShop.Data.Models;
 using System.Linq;
 
@@ -9,9 +7,24 @@ namespace PetShop.Data.Controllers
     /// <summary>
     /// Class which is used as controller for client table.
     /// </summary>
-    class ClientController
+    public class ClientController
     {
         private PetShopContext petShopContext;
+
+        /// <summary>
+        /// Empty constructor of this class which create new PetShopContext.
+        /// </summary>
+        public ClientController()
+        {
+            this.petShopContext = new PetShopContext();
+        }
+
+
+        public ClientController(PetShopContext context)
+        {
+            this.petShopContext = context;
+        }
+
 
         /// <summary>
         /// Function that add information to the database about a client
@@ -19,7 +32,7 @@ namespace PetShop.Data.Controllers
         /// <param name="client">Argumet based on model used to add information in the database.</param>
         public void AddClient(Models.Client client)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 petShopContext.Clients.Add(client);
                 petShopContext.SaveChanges();
@@ -32,7 +45,7 @@ namespace PetShop.Data.Controllers
         /// <param name="client">Argumet based on model used to update information in the database.</param>
         public void UpdateClient(Models.Client client)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 var update = petShopContext.Clients.Find(client.Id);
                 if (update != null)
@@ -50,7 +63,7 @@ namespace PetShop.Data.Controllers
         /// <param name="client">Argumet based on model used to delete information in the database.</param>
         public void RemoveClient(Models.Client client /*int id*/)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 var delClient = petShopContext.Clients.Find(client.Id);
                 if (delClient != null)
@@ -69,7 +82,7 @@ namespace PetShop.Data.Controllers
         /// <returns></returns>
         public List<Client> SearchByTagsClient(string clientName, string SSN)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 return petShopContext.Clients.Where(x => x.ClientName == clientName && x.Ssn == SSN).ToList();
             }
@@ -81,7 +94,7 @@ namespace PetShop.Data.Controllers
         /// <returns>Returns all information about the clients converted to list.</returns>
         public List<Client> GetAllClients()
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 return petShopContext.Clients.ToList();
             }

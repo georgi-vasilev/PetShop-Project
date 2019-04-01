@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using PetShop.Data.Models;
 using System.Linq;
 
@@ -9,9 +7,24 @@ namespace PetShop.Data.Controllers
     /// <summary>
     /// Class which is used as controller for sales table.
     /// </summary>
-    class SalesController
+    public class SalesController
     {
         private PetShopContext petShopContext;
+
+        /// <summary>
+        /// Empty constructor of this class which create new PetShopContext.
+        /// </summary>
+        public SalesController()
+        {
+            this.petShopContext = new PetShopContext();
+        }
+
+        public SalesController(PetShopContext context)
+        {
+            this.petShopContext = context;
+        }
+
+
 
         /// <summary>
         /// Create new query for sale.
@@ -19,7 +32,7 @@ namespace PetShop.Data.Controllers
         /// <param name="sale">Argumet based on model used to add information in the database.</param>
         public void Sale(Models.Sales sale)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 petShopContext.Sales.Add(sale);
                 petShopContext.SaveChanges();
@@ -32,7 +45,7 @@ namespace PetShop.Data.Controllers
         /// <returns>Convert all sales entries to list</returns>
         public List<Sales> GetAllSales()
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 return petShopContext.Sales.ToList();
             }
