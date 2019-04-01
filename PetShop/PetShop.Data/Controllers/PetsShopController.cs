@@ -11,16 +11,26 @@ namespace PetShop.Data.Controllers
     {
         private PetShopContext petShopContext;
 
+        /// <summary>
+        /// Empty constructor of this class which create new PetShopContext.
+        /// </summary>
+        public PetsShopController()
+        {
+            this.petShopContext = new PetShopContext();
+        }
 
-       /* private PetShopContext petShopContext;
+        public PetsShopController(PetShopContext context)
+        {
+            this.petShopContext = context;
+        }
+
         public void AddFood(Models.Food food)
         {
-            var opa = 0;
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {  
                 petShopContext.Food.Add(food);
                 petShopContext.SaveChanges();
             }
-        }*/
+        }
     }
 }

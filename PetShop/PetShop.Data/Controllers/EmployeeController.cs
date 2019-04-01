@@ -14,12 +14,27 @@ namespace PetShop.Data.Controllers
         private PetShopContext petShopContext;
 
         /// <summary>
+        /// Empty constructor of this class which create new PetShopContext.
+        /// </summary>
+        public EmployeeController()
+        {
+            this.petShopContext = new PetShopContext();
+        }
+
+        public EmployeeController(PetShopContext context)
+        {
+            this.petShopContext = context;
+        }
+
+
+
+        /// <summary>
         /// Function to add information about employee in the database.
         /// </summary>
         /// <param name="employees">Argumet based on model used to add information in the database.</param>
         public void AddEmployee(Models.Employee employees)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 petShopContext.Employees.Add(employees);
                 petShopContext.SaveChanges();
@@ -32,7 +47,7 @@ namespace PetShop.Data.Controllers
         /// <param name="employee">Argumet based on model used to update information in the database.</param>
         public void UpdateEmployee(Models.Employee employee)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 var update = petShopContext.Employees.Find(employee.Id);
                 if (update != null)
@@ -49,7 +64,7 @@ namespace PetShop.Data.Controllers
         /// <param name="employee">Argumet based on model used to delete information in the database.</param>
         public void Remove(Models.Employee employee /*int id*/)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 var delEmployee = petShopContext.Employees.Find(employee.Id);
                 if (delEmployee != null)
@@ -67,7 +82,7 @@ namespace PetShop.Data.Controllers
         /// <returns>Returns all employees to list</returns>
         public List<Employee> GetAllEmployees()
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 return petShopContext.Employees.ToList();
             }
@@ -81,7 +96,7 @@ namespace PetShop.Data.Controllers
         /// <returns>Returns all found information using LINQ and Lambda</returns>
         public List<Employee> SearchByTagsEmployee(string employeeName, string sSN)
         {
-            using (petShopContext = new PetShopContext())
+            using (petShopContext)
             {
                 return petShopContext.Employees.Where(x => x.EmployeeName == employeeName && x.Ssn == sSN).ToList();
             }
