@@ -6,8 +6,16 @@ using System.Text;
 
 namespace PetShop.Data.Views
 {
+    /// <summary>
+    /// Class that contains all different remove options to delete information
+    /// from the database.
+    /// </summary>
     public class RemoveMenu
     {
+        /// <summary>
+        /// Main method to give the user opportunity to choose what
+        /// they would like to delete from the database.
+        /// </summary>
         public static void Remove()
         {
             int choice = 0;
@@ -21,6 +29,9 @@ namespace PetShop.Data.Views
             } while (choice != 0);
         }
 
+        /// <summary>
+        /// Display all possible options in the remove menu
+        /// </summary>
         public static void DisplayMenu()
         {
             Console.WriteLine("REMOVE MENU");
@@ -32,6 +43,12 @@ namespace PetShop.Data.Views
             Console.WriteLine("0:Back");
         }
 
+        /// <summary>
+        /// This method use the switch operator for better
+        /// flexibility in order to make it user friendly.
+        /// </summary>
+        /// <param name="menu">The argument "menu" reads the given number
+        /// from the console.</param>
         public static void Redirect(int menu)
         {
             switch (menu)
@@ -50,7 +67,7 @@ namespace PetShop.Data.Views
                     Console.WriteLine("Enter AnimalID:");
                     animal.Id = int.Parse(Console.ReadLine());
                     Console.WriteLine("Please wait...");
-                    animalController.RemoveAnimal(animal);
+                    animalController.RemoveAnimal(animal);//Trq da e animal ne animal.Id
                     break;
                 case 3:
                     var client = new Client();

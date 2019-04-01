@@ -1,13 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using PetShop.Data.Controllers;
 using PetShop.Data.Models;
 
 namespace PetShop.Data.Views
 {
+    /// <summary>
+    /// Class that contains all different option to add information to the database
+    /// </summary>
     public class AddMenu
     {
+        /// <summary>
+        /// Function that gives the user opportunity
+        /// to choose what they would like to add into
+        /// the database.
+        /// </summary>
         public static void Add()
         {
             int choice = 0;
@@ -21,6 +27,10 @@ namespace PetShop.Data.Views
             } while (choice != 0);
         }
 
+        /// <summary>
+        /// Display function that visualize all possible
+        /// options to add information to the database
+        /// </summary>
         public static void DisplayMenu()
         {
             Console.WriteLine("ADD MENU");
@@ -31,7 +41,13 @@ namespace PetShop.Data.Views
             Console.WriteLine("5:Food");
             Console.WriteLine("0:Back");
         }
-
+        
+        /// <summary>
+        /// Function using switch operator with different cases
+        /// depending on the user to add different kind of information
+        /// to the database
+        /// </summary>
+        /// <param name="menu">The argument "menu" is read from the console in order to be used in switch operator</param>
         public static void Redirect(int menu)
         {
             switch (menu)
