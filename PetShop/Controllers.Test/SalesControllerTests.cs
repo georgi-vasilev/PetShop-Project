@@ -5,11 +5,6 @@ using PetShop.Data;
 using PetShop.Data.Controllers;
 using PetShop.Data.Models;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Controllers.Test
 {

@@ -1,8 +1,6 @@
 ﻿using PetShop.Data.Controllers;
 using PetShop.Data.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PetShop.Data.Views
 {
