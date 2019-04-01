@@ -13,8 +13,8 @@ namespace Controllers.Test
         public void TestMethod()
         {
             // TODO: Add your test code here
-            var answer = 42;
-            Assert.That(answer, Is.EqualTo(42), "Some useful error message");
+            var answer = 9;
+            Assert.That(answer, Is.EqualTo(9), "Some useful error message");
         }
     }
 }

@@ -35,11 +35,11 @@ namespace PetShop.Data.Controllers
             using (petShopContext)
             {
                 var delAnimal = petShopContext.Animals.Find(animal.Id);
-                if (delAnimal != null)
-                {
+                //if (delAnimal != null)
+                //{
                     petShopContext.Animals.Remove(delAnimal);
                     petShopContext.SaveChanges();
-                }
+                //}
             }
         }
 
