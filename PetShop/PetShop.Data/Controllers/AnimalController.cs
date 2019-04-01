@@ -52,7 +52,7 @@ namespace PetShop.Data.Controllers
         {
             using (petShopContext)
             {
-                var delAnimal = petShopContext.Animals.Find(animal.Id);
+                Animal delAnimal = petShopContext.Animals.Find(animal.Id);
                 if (delAnimal != null)
                 {
                     petShopContext.Animals.Remove(delAnimal);
@@ -104,6 +104,39 @@ namespace PetShop.Data.Controllers
             {
                 return petShopContext.Animals.ToList();
             }
+        }
+
+
+
+        /*SPRAVKI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
+        public List<Animal> AllTheSameSpecies(string specie)
+        {
+            List<Animal> result = new List<Animal>();
+            using (petShopContext)
+            {
+                result = petShopContext.Animals.Where(a => a.Specie == specie).ToList();
+            }
+            return result;
+        }
+
+        public List<Animal> AllTheSameBreed(string breed)
+        {
+            List<Animal> result = new List<Animal>();
+            using (petShopContext)
+            {
+                result = petShopContext.Animals.Where(a => a.Breed == breed).ToList();
+            }
+            return result;
+        }
+
+        public List<Animal> AllTheSameSex(string sex)
+        {
+            List<Animal> result = new List<Animal>();
+            using (petShopContext)
+            {
+                result = petShopContext.Animals.Where(a => a.Sex == sex).ToList();
+            }
+            return result;
         }
 
 
