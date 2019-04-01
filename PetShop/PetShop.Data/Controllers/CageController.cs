@@ -9,7 +9,7 @@ namespace PetShop.Data.Controllers
     /// <summary>
     /// Class which is used as controller for cage table.
     /// </summary>
-    class CageController
+    public class CageController
     {
         private PetShopContext petShopContext;
 

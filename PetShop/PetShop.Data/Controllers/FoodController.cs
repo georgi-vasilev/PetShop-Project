@@ -9,7 +9,7 @@ namespace PetShop.Data.Controllers
     /// <summary>
     /// Class which is used as controller for food table.
     /// </summary>
-    class FoodController
+    public class FoodController
     {
         private PetShopContext petShopContext;
 

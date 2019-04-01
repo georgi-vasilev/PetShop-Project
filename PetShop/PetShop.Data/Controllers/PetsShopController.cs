@@ -9,7 +9,7 @@ namespace PetShop.Data.Controllers
 {
     class PetsShopController
     {
-        /*private PetShopContext petShopContext;*/
+        private PetShopContext petShopContext;
 
         /// <summary>
         /// Empty constructor of this class which create new PetShopContext.
