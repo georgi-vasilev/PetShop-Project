@@ -85,5 +85,36 @@ namespace PetShop.Data.Controllers
                 return petShopContext.Cages.ToList();
             }
         }
+
+        /*SPRAVKI/////////////////////////////////////////////*/
+        /// <summary>
+        /// Method to show cages which have same cage type
+        /// </summary>
+        /// <param name="cageType">Argument which is read from the console</param>
+        /// <returns>Found the same cage type from cages</returns>
+        public List<Cage>AllTheSameCageType(string cageType)
+        {
+            List<Cage> result = new List<Cage>();
+            using (petShopContext)
+            {
+                result = petShopContext.Cages.Where(a => a.CageType == cageType).ToList();
+                return result;
+            }
+        }
+        /// <summary>
+        /// Method to show cages which have same capacity
+        /// </summary>
+        /// <param name="capacity">Argument which is read from the console</param>
+        /// <returns>Found the same capacity from cages</returns>
+        public List<Cage> AllTheSameCapacity(int capacity)
+        {
+            List<Cage> result = new List<Cage>();
+            using (petShopContext)
+            {
+                result = petShopContext.Cages.Where(a => a.Capacity == capacity).ToList();
+                return result;
+            }
+        }
+
     }
 }

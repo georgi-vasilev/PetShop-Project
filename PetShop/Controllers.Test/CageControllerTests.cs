@@ -23,7 +23,7 @@ namespace Controllers.Test
             Cage cages = new Cage()
             {
                 CageType = "Aquarium",
-                Capacity = 20
+                Capacity = 21
             };
 
             service.AddCage(cages);
