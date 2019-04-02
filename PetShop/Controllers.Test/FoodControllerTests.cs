@@ -61,5 +61,61 @@ namespace Controllers.Test
             Assert.AreEqual("Cat food", foodsFound[1].FoodType);
             Assert.AreEqual("Fish food", foodsFound[2].FoodType);
         }
+
+        [Test]
+        public void GetAllFoodsWithTheSameBrand()
+        {
+            var data = new List<Food>
+            {
+                new Food { FoodType = "Dog food", Brand = "Solid Gold" },
+                new Food { FoodType = "Cat food", Brand = "Solid Gold" },
+                new Food { FoodType = "Fish food", Brand = "Nutro" },
+            }.AsQueryable();
+
+            var mockSet = new Mock<DbSet<Food>>();
+            mockSet.As<IQueryable<Food>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+
+            var mockContext = new Mock<PetShopContext>();
+            mockContext.Setup(s => s.Food).Returns(mockSet.Object);
+
+            var service = new FoodController(mockContext.Object);
+            var foodsFound = service.GetAllFoods();
+
+            Assert.AreEqual(3, foodsFound.Count());
+            Assert.AreEqual("Solid Gold", foodsFound[0].Brand);
+            Assert.AreEqual("Solid Gold", foodsFound[1].Brand);
+            Assert.AreEqual("Nutro", foodsFound[2].Brand);
+        }
+
+        [Test]
+        public void GetAllFoodsWithTheSameQuantity()
+        {
+            var data = new List<Food>
+            {
+                new Food { FoodType = "Dog food", Quantity = 17 },
+                new Food { FoodType = "Cat food", Quantity = 17 },
+                new Food { FoodType = "Fish food", Quantity = 8  },
+            }.AsQueryable();
+
+            var mockSet = new Mock<DbSet<Food>>();
+            mockSet.As<IQueryable<Food>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+
+            var mockContext = new Mock<PetShopContext>();
+            mockContext.Setup(s => s.Food).Returns(mockSet.Object);
+
+            var service = new FoodController(mockContext.Object);
+            var foodsFound = service.GetAllFoods();
+
+            Assert.AreEqual(3, foodsFound.Count());
+            Assert.AreEqual(17, foodsFound[0].Quantity);
+            Assert.AreEqual(17, foodsFound[1].Quantity);
+            Assert.AreEqual(8, foodsFound[2].Quantity);
+        }
     }
 }
