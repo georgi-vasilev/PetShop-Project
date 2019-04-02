@@ -63,5 +63,32 @@ namespace Controllers.Test
         }
 
 
+        [Test]
+        public void GetAllClients()
+        {
+            var data = new List<Client>
+            {
+                new Client { ClientName = "Semir Mohamedov", Ssn= "0163248934" },
+                new Client { ClientName = "John Gustav", Ssn = "3496245814" },
+                new Client { ClientName = "Daniel Bashev", Ssn = "6987412536" },
+            }.AsQueryable();
+
+            var mockSet = new Mock<DbSet<Client>>();
+            mockSet.As<IQueryable<Client>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<Client>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<Client>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<Client>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+
+            var mockContext = new Mock<PetShopContext>();
+            mockContext.Setup(s => s.Clients).Returns(mockSet.Object);
+
+            var service = new ClientController(mockContext.Object);
+            var ClientsFound = service.GetAllClients();
+
+            Assert.AreEqual(3, ClientsFound.Count());
+            Assert.AreEqual("0163248934", ClientsFound[0].Ssn);
+            Assert.AreEqual("3496245814", ClientsFound[1].Ssn);
+            Assert.AreEqual("6987412536", ClientsFound[2].Ssn);
+        }
     }
 }
