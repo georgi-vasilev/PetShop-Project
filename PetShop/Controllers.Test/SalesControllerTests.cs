@@ -66,7 +66,7 @@ namespace Controllers.Test
             Assert.AreEqual(8, salesFound[2].EmployeeId);
         }
 
-       /* [Test]
+        [Test]
         public void GetAllSalesOnTheSameDate()
         {
             var data = new List<Sales>
@@ -90,9 +90,9 @@ namespace Controllers.Test
             var salesFound = service.GetAllSales();
 
             Assert.AreEqual(3, salesFound.Count());
-            Assert.AreEqual("2019-04-02 00:00:00".ToString(), salesFound[0].SaleDate);
-            Assert.AreEqual("2019-04-02 00:00:00".ToString(), salesFound[1].SaleDate);
-            Assert.AreEqual("2019-04-02 00:00:00".ToString(), salesFound[2].SaleDate);
-        }*/
+            Assert.AreEqual(DateTime.Parse("2019-04-02"), salesFound[0].SaleDate);
+            Assert.AreEqual(DateTime.Parse("2019-04-02"), salesFound[1].SaleDate);
+            Assert.AreEqual(DateTime.Parse("2019-04-02"), salesFound[2].SaleDate);
+        }
     }
 }
