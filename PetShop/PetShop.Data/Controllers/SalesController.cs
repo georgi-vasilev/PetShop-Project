@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using PetShop.Data.Models;
 using System.Linq;
+using System;
 
 namespace PetShop.Data.Controllers
 {
@@ -48,6 +49,16 @@ namespace PetShop.Data.Controllers
             using (petShopContext)
             {
                 return petShopContext.Sales.ToList();
+            }
+        }
+
+        public List<Sales> GetAllSalesMadeOnTheSameDate(DateTime saleDate)
+        {
+            List<Sales> result = new List<Sales>();
+            using (petShopContext)
+            {
+                result = petShopContext.Sales.Where(x => x.SaleDate == saleDate).ToList();
+                return result;
             }
         }
     }

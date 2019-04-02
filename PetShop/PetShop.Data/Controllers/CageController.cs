@@ -86,7 +86,6 @@ namespace PetShop.Data.Controllers
             }
         }
 
-        /*SPRAVKI/////////////////////////////////////////////*/
         /// <summary>
         /// Method to show cages which have same cage type
         /// </summary>

@@ -99,5 +99,25 @@ namespace PetShop.Data.Controllers
             }
         }
 
+        public List<Food> GetAllFoodsWithTheSameBrand(string foodType, string brand)
+        {
+            List<Food> result = new List<Food>();
+            using (petShopContext)
+            {
+                result = petShopContext.Food.Where(x => x.Brand == brand).ToList();
+                return result;
+            }
+        }
+
+        public List<Food> GetAllFoodsWithTheSameQuantity(string foodType, decimal quantity)
+        {
+            List<Food> result = new List<Food>();
+            using (petShopContext)
+            {
+                result = petShopContext.Food.Where(x => x.Quantity == quantity).ToList();
+                return result;
+            }
+        }
+
     }
 }

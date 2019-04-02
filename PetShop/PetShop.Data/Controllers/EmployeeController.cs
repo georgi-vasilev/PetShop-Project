@@ -100,5 +100,25 @@ namespace PetShop.Data.Controllers
             }
         }
 
+        public List<Employee> GetEmployeesWithSalaryMoreThan5h(string employeeName, decimal Salary)
+        {
+            List<Employee> result = new List<Employee>();
+            using (petShopContext)
+            {
+                result = petShopContext.Employees.Where(x => x.Salary >= 500).ToList();
+                return result;
+            }
+        }
+
+        public List<Employee> GetEmployeesWhoWorksAsVets(string employeeName, string jobType)
+        {
+            List<Employee> result = new List<Employee>();
+            using (petShopContext)
+            {
+                result = petShopContext.Employees.Where(x => x.JobType == "Vet").ToList();
+                return result;
+            }
+        }
+
     }
 }

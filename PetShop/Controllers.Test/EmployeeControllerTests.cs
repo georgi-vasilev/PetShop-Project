@@ -62,5 +62,61 @@ namespace Controllers.Test
             Assert.AreEqual("John Gustav", EmployeesFound[1].EmployeeName);
             Assert.AreEqual("Daniel Bashev", EmployeesFound[2].EmployeeName);
         }
+        [Test]
+        public void GetAllEmployeesWhoWorksAsVet()
+        {
+            var data = new List<Employee>
+            {
+                new Employee { EmployeeName = "Semir Mohamedov", JobType = "Vet" },
+                new Employee { EmployeeName = "John Gustav", JobType = "Saler" },
+                new Employee { EmployeeName = "Daniel Bashev", JobType = "Saler" },
+
+            }.AsQueryable();
+
+            var mockSet = new Mock<DbSet<Employee>>();
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+
+            var mockContext = new Mock<PetShopContext>();
+            mockContext.Setup(s => s.Employees).Returns(mockSet.Object);
+
+            var service = new EmployeeController(mockContext.Object);
+            var EmployeesFound = service.GetAllEmployees();
+
+            Assert.AreEqual(3, EmployeesFound.Count());
+            Assert.AreEqual("Vet", EmployeesFound[0].JobType);
+            Assert.AreEqual("Saler", EmployeesFound[1].JobType);
+            Assert.AreEqual("Saler", EmployeesFound[2].JobType);
+        }
+        [Test]
+        public void GetAllEmployeesWithSalaryMoreThan5h()
+        {
+            var data = new List<Employee>
+            {
+                new Employee { EmployeeName = "Semir Mohamedov", Salary = 420 },
+                new Employee { EmployeeName = "John Gustav", Salary = 500 },
+                new Employee { EmployeeName = "Daniel Bashev", Salary = 928 },
+
+            }.AsQueryable();
+
+            var mockSet = new Mock<DbSet<Employee>>();
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+
+            var mockContext = new Mock<PetShopContext>();
+            mockContext.Setup(s => s.Employees).Returns(mockSet.Object);
+
+            var service = new EmployeeController(mockContext.Object);
+            var EmployeesFound = service.GetAllEmployees();
+
+            Assert.AreEqual(3, EmployeesFound.Count());
+            Assert.AreEqual(420, EmployeesFound[0].Salary);
+            Assert.AreEqual(500, EmployeesFound[1].Salary);
+            Assert.AreEqual(928, EmployeesFound[2].Salary);
+        }
     }
 }
