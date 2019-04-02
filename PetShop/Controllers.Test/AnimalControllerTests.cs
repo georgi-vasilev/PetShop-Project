@@ -24,7 +24,6 @@ namespace Controllers.Test
             {
                 Specie = "dog",
                 Breed = "aaaa"
-              
             };
 
             service.AddAnimal(animal);
