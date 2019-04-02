@@ -99,5 +99,23 @@ namespace PetShop.Data.Controllers
                 return petShopContext.Clients.ToList();
             }
         }
+
+
+
+        /// <summary>
+        /// Method to show all clients with same name
+        /// </summary>
+        /// <param name="clientName">Argument that read from the console</param>
+        /// <returns>Found the same client name</returns>
+        public List<Client> GetAllTheSameClientName(string clientName)
+        {
+            List<Client> result = new List<Client>();
+            using (petShopContext)
+            {
+                result = petShopContext.Clients.Where(n => n.ClientName == clientName).ToList();
+                return result;
+            }
+        }
+
     }
 }
