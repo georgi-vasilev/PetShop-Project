@@ -1,10 +1,6 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Moq;
 using Microsoft.EntityFrameworkCore;
 using PetShop.Data.Models;
@@ -16,15 +12,6 @@ namespace Controllers.Test
     [TestFixture]
     public class AnimalControllerTests
     {
-        [Test]
-        public void TestMethod()
-        {
-            // TODO: Add your test code here
-            var answer = 42;
-            Assert.That(answer, Is.EqualTo(42), "Some useful error message");
-        }
-
-
         [Test]
         public void AddAnimalSavesAnAnimalViaContext()
         {
@@ -147,8 +134,6 @@ namespace Controllers.Test
             Assert.AreEqual("dog", animalsFound[0].Specie);
             Assert.AreEqual("cat", animalsFound[1].Specie);
             Assert.AreEqual("parrrot", animalsFound[2].Specie);
-
-
         }
 
         [Test]
