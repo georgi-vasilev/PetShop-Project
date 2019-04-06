@@ -9,9 +9,15 @@ using PetShop.Data.Controllers;
 
 namespace Controllers.Test
 {
+    /// <summary>
+    /// Test class for animal controller.
+    /// </summary>
     [TestFixture]
     public class AnimalControllerTests
     {
+        /// <summary>
+        /// Test for add animal function to the database.
+        /// </summary>
         [Test]
         public void AddAnimalSavesAnAnimalViaContext()
         {
@@ -107,6 +113,9 @@ namespace Controllers.Test
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
         }*/
 
+        /// <summary>
+        /// Test for the function which returns all animals in the database.
+        /// </summary>
         [Test]
         public void GetAllAnimal()
         {
@@ -118,10 +127,14 @@ namespace Controllers.Test
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Animal>>();
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Animals).Returns(mockSet.Object);
@@ -135,21 +148,30 @@ namespace Controllers.Test
             Assert.AreEqual("parrrot", animalsFound[2].Specie);
         }
 
+        /// <summary>
+        /// Test for the function which you search animal by tag
+        /// </summary>
         [Test]
         public void SearchByTagsAnimal()
         {
             var data = new List<Animal>
             {
-                new Animal { Specie = "dog" , Breed="NemOvcharka"},
-                new Animal { Breed = "Ovcharsko" , Specie="doggg"},
-                //new Animal { Specie = "parrrot" },
+                new Animal { Specie = "dog",
+                             Breed ="NemOvcharka"},
+
+                new Animal { Breed = "Ovcharsko",
+                             Specie ="doggg"},
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Animal>>();
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Animals).Returns(mockSet.Object);
@@ -161,10 +183,11 @@ namespace Controllers.Test
             Assert.AreEqual("dog", animalsFound[0].Specie);
             //Assert.AreEqual("cat", animalsFound[1].Specie);
             //Assert.AreEqual("parrrot", animalsFound[2].Specie);
-
-
         }
 
+        /// <summary>
+        /// Test for the method which returns all animals which are the same specie.
+        /// </summary>
         [Test]
         public void GetAllTheSameSpeciesWhichContainSameSpecie()
         {
@@ -176,10 +199,14 @@ namespace Controllers.Test
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Animal>>();
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Animals).Returns(mockSet.Object);
@@ -189,8 +216,12 @@ namespace Controllers.Test
 
             Assert.AreEqual(1, animalsFound.Count());
             Assert.AreEqual("dog", animalsFound[0].Specie);
-
         }
+
+        /// <summary>
+        /// Test which returns if there are animals that are not the same specie
+        /// as the one entered by the user.
+        /// </summary>
         [Test]
         public void GetAllTheSameSpeciesWhichNoContainSameSpecie()
         {
@@ -202,10 +233,14 @@ namespace Controllers.Test
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Animal>>();
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Animals).Returns(mockSet.Object);
@@ -215,9 +250,10 @@ namespace Controllers.Test
 
             Assert.AreEqual(0, animalsFound.Count());
         }
-
-
-
+        
+        /// <summary>
+        /// Test which returns all species which are the same breed.
+        /// </summary>
         [Test]
         public void GetAllTheSameBreedsWhichContainSameBreed()
         {
@@ -229,10 +265,14 @@ namespace Controllers.Test
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Animal>>();
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Animals).Returns(mockSet.Object);
@@ -244,6 +284,9 @@ namespace Controllers.Test
             Assert.AreEqual("aaa", animalsFind[0].Breed);
         }
 
+        /// <summary>
+        /// Test if there are not species with the one entered by the user
+        /// </summary>
         [Test]
         public void GetAllTheSameBreedsWhichNoContainSameBreed()
         {
@@ -255,10 +298,14 @@ namespace Controllers.Test
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Animal>>();
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Animals).Returns(mockSet.Object);
@@ -268,9 +315,10 @@ namespace Controllers.Test
 
             Assert.AreEqual(0, animalsFind.Count());
         }
-
-
-
+        
+        /// <summary>
+        /// Test to return all species with the same sex.
+        /// </summary>
         [Test]
         public void GetAllTheSameSexsWhichContainSameSex()
         {
@@ -282,10 +330,14 @@ namespace Controllers.Test
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Animal>>();
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Animals).Returns(mockSet.Object);
@@ -297,6 +349,9 @@ namespace Controllers.Test
             Assert.AreEqual("aaa", animalsFind[0].Sex);
         }
 
+        /// <summary>
+        /// Test to return all species which are not the same sex.
+        /// </summary>
         [Test]
         public void GetAllTheSameSexsWhichNoContainSameSex()
         {
@@ -308,10 +363,14 @@ namespace Controllers.Test
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Animal>>();
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Animal>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Animals).Returns(mockSet.Object);
@@ -321,7 +380,5 @@ namespace Controllers.Test
 
             Assert.AreEqual(0, animalsFind.Count());
         }
-
-
     }
 }

@@ -9,9 +9,15 @@ using System.Linq;
 
 namespace Controllers.Test
 {
+    /// <summary>
+    /// Test class for employee controller.
+    /// </summary>
     [TestFixture]
     public class EmployeeControllerTests
     {
+        /// <summary>
+        /// Test for AddEmployee function
+        /// </summary>
         [Test]
         public void AddEmployeeSavesAnEmployeeViaContext()
         {
@@ -35,21 +41,34 @@ namespace Controllers.Test
             mockSet.Verify(m => m.Add(It.IsAny<Employee>()), Times.Once());
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
+
+        /// <summary>
+        /// Test for method which return all employees in the database.
+        /// </summary>
         [Test]
         public void GetAllEmployees()
         {
             var data = new List<Employee>
             {
-                new Employee { EmployeeName = "Semir Mohamedov", Salary=2020 },
-                new Employee { EmployeeName = "John Gustav", Salary = 2913 },
-                new Employee { EmployeeName = "Daniel Bashev", Salary =2351 },
+                new Employee { EmployeeName = "Semir Mohamedov",
+                                Salary =2020 },
+
+                new Employee { EmployeeName = "John Gustav",
+                               Salary = 2913 },
+
+                new Employee { EmployeeName = "Daniel Bashev",
+                               Salary =2351 },
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Employee>>();
-            mockSet.As<IQueryable<Employee>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Employee>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Employee>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Employee>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Employees).Returns(mockSet.Object);
@@ -62,22 +81,35 @@ namespace Controllers.Test
             Assert.AreEqual("John Gustav", EmployeesFound[1].EmployeeName);
             Assert.AreEqual("Daniel Bashev", EmployeesFound[2].EmployeeName);
         }
+
+        /// <summary>
+        /// Test for the method which return all employees who works as vet
+        /// </summary>
         [Test]
         public void GetAllEmployeesWhoWorksAsVet()
         {
             var data = new List<Employee>
             {
-                new Employee { EmployeeName = "Semir Mohamedov", JobType = "Vet" },
-                new Employee { EmployeeName = "John Gustav", JobType = "Saler" },
-                new Employee { EmployeeName = "Daniel Bashev", JobType = "Saler" },
+                new Employee { EmployeeName = "Semir Mohamedov",
+                                JobType = "Vet" },
+
+                new Employee { EmployeeName = "John Gustav",
+                               JobType = "Saler" },
+
+                new Employee { EmployeeName = "Daniel Bashev",
+                               JobType = "Saler" },
 
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Employee>>();
-            mockSet.As<IQueryable<Employee>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Employee>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Employee>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Employee>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Employees).Returns(mockSet.Object);
@@ -90,6 +122,10 @@ namespace Controllers.Test
             Assert.AreEqual("Saler", EmployeesFound[1].JobType);
             Assert.AreEqual("Saler", EmployeesFound[2].JobType);
         }
+        /// <summary>
+        /// Test for the function to return employees with salary more than a given number.
+        /// in this case the given number is 500.
+        /// </summary>
         [Test]
         public void GetAllEmployeesWithSalaryMoreThan5h()
         {
@@ -102,10 +138,14 @@ namespace Controllers.Test
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Employee>>();
-            mockSet.As<IQueryable<Employee>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Employee>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Employee>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Employee>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Employee>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Employees).Returns(mockSet.Object);

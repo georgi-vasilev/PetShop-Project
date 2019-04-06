@@ -99,6 +99,13 @@ namespace PetShop.Data.Controllers
             }
         }
 
+        /// <summary>
+        /// Function to return all food with the same brand
+        /// </summary>
+        /// <param name="foodType">Arguement which represents the food type whether it
+        /// is for dogs, cats and so on.</param>
+        /// <param name="brand">Arguement which represents the brand we are looking for</param>
+        /// <returns></returns>
         public List<Food> GetAllFoodsWithTheSameBrand(string foodType, string brand)
         {
             List<Food> result = new List<Food>();
@@ -109,6 +116,13 @@ namespace PetShop.Data.Controllers
             }
         }
 
+        /// <summary>
+        /// Method to get all food with the same quantity.
+        /// </summary>
+        /// <param name="foodType">Arguement which represents the food type</param>
+        /// <param name="quantity">Arguement which will be the number of quantity
+        /// we are looking for.</param>
+        /// <returns></returns>
         public List<Food> GetAllFoodsWithTheSameQuantity(string foodType, decimal quantity)
         {
             List<Food> result = new List<Food>();

@@ -9,9 +9,16 @@ using System.Linq;
 
 namespace Controllers.Test
 {
+    /// <summary>
+    /// Test class for food controller.
+    /// </summary>
     [TestFixture]
     public class FoodControllerTests
     {
+        /// <summary>
+        /// Test for AddFood function which add information
+        /// about food in the database.
+        /// </summary>
         [Test]
         public void AddFoodSavesAFoodViaContext()
         {
@@ -34,6 +41,11 @@ namespace Controllers.Test
             mockSet.Verify(m => m.Add(It.IsAny<Food>()), Times.Once());
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
+
+        /// <summary>
+        /// Test for the method GetAllFoods which return all foods in the
+        /// database.
+        /// </summary>
         [Test]
         public void GetAllFoods()
         {
@@ -45,10 +57,14 @@ namespace Controllers.Test
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Food>>();
-            mockSet.As<IQueryable<Food>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Food>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Food>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Food>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Food>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Food).Returns(mockSet.Object);
@@ -62,6 +78,9 @@ namespace Controllers.Test
             Assert.AreEqual("Fish food", foodsFound[2].FoodType);
         }
 
+        /// <summary>
+        /// Test method for the function which return all foods with the same brand
+        /// </summary>
         [Test]
         public void GetAllFoodsWithTheSameBrand()
         {
@@ -73,10 +92,14 @@ namespace Controllers.Test
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Food>>();
-            mockSet.As<IQueryable<Food>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Food>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Food>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Food>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Food>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Food).Returns(mockSet.Object);
@@ -90,6 +113,9 @@ namespace Controllers.Test
             Assert.AreEqual("Nutro", foodsFound[2].Brand);
         }
 
+        /// <summary>
+        /// Test for the function which return all foods with the same quantity.
+        /// </summary>
         [Test]
         public void GetAllFoodsWithTheSameQuantity()
         {
@@ -101,10 +127,14 @@ namespace Controllers.Test
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Food>>();
-            mockSet.As<IQueryable<Food>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Food>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Food>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Food>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Food>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Food>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Food).Returns(mockSet.Object);

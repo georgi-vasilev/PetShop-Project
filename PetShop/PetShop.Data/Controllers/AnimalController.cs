@@ -104,9 +104,6 @@ namespace PetShop.Data.Controllers
             }
         }
 
-
-
-        /*SPRAVKI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\*/
         /// <summary>
         /// Method to show animals which have same specie
         /// </summary>
@@ -122,8 +119,6 @@ namespace PetShop.Data.Controllers
             return result;
         }
 
-
-
         /// <summary>
         /// Method to show animals which have same breed
         /// </summary>
@@ -138,8 +133,6 @@ namespace PetShop.Data.Controllers
             }
             return result;
         }
-
-
 
         /// <summary>
         /// Method to show animals which have same sex

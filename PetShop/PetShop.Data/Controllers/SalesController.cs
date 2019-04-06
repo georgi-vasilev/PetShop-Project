@@ -52,6 +52,12 @@ namespace PetShop.Data.Controllers
             }
         }
 
+        /// <summary>
+        /// Function which will return all sales made on the same date.
+        /// </summary>
+        /// <param name="saleDate">Arguement which is the date we are looking for
+        /// in format "YYYY-MM-DD"</param>
+        /// <returns></returns>
         public List<Sales> GetAllSalesMadeOnTheSameDate(DateTime saleDate)
         {
             List<Sales> result = new List<Sales>();

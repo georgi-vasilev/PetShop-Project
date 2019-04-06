@@ -9,9 +9,15 @@ using System.Linq;
 
 namespace Controllers.Test
 {
+    /// <summary>
+    /// Test class for client controller
+    /// </summary>
     [TestFixture]
     public class ClientControllerTests
     {
+        /// <summary>
+        /// Test for the method which adds client to the database.
+        /// </summary>
         [Test]
         public void AddClientSavesAnClientViaContext()
         {
@@ -35,8 +41,11 @@ namespace Controllers.Test
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
 
+        /// <summary>
+        /// Test for the method which returns all clients with the same names
+        /// </summary>
         [Test]
-        public void GetAllTheSameClientNameWhichContainSameClientName()
+        public void GetAllClientsWithTheSameName()
         {
             var data = new List<Client>
             {
@@ -46,10 +55,14 @@ namespace Controllers.Test
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Client>>();
-            mockSet.As<IQueryable<Client>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Client>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Client>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Client>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Client>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Client>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Client>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Client>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Clients).Returns(mockSet.Object);
@@ -62,22 +75,33 @@ namespace Controllers.Test
 
         }
 
-
+        /// <summary>
+        /// Test for the method which returns all clients
+        /// </summary>
         [Test]
         public void GetAllClients()
         {
             var data = new List<Client>
             {
-                new Client { ClientName = "Semir Mohamedov", Ssn= "0163248934" },
-                new Client { ClientName = "John Gustav", Ssn = "3496245814" },
-                new Client { ClientName = "Daniel Bashev", Ssn = "6987412536" },
+                new Client { ClientName = "Semir Mohamedov",
+                             Ssn = "0163248934" },
+
+                new Client { ClientName = "John Gustav",
+                             Ssn = "3496245814" },
+
+                new Client { ClientName = "Daniel Bashev",
+                             Ssn = "6987412536" },
             }.AsQueryable();
 
             var mockSet = new Mock<DbSet<Client>>();
-            mockSet.As<IQueryable<Client>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Client>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Client>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Client>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Client>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Client>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Client>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Client>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Clients).Returns(mockSet.Object);
@@ -86,9 +110,9 @@ namespace Controllers.Test
             var ClientsFound = service.GetAllClients();
 
             Assert.AreEqual(3, ClientsFound.Count());
-            Assert.AreEqual("0163248934", ClientsFound[0].Ssn);
-            Assert.AreEqual("3496245814", ClientsFound[1].Ssn);
-            Assert.AreEqual("6987412536", ClientsFound[2].Ssn);
+            Assert.AreEqual("Semir Mohamedov", ClientsFound[0].ClientName);
+            Assert.AreEqual("John Gustav", ClientsFound[1].ClientName);
+            Assert.AreEqual("Daniel Bashev", ClientsFound[2].ClientName);
         }
     }
 }

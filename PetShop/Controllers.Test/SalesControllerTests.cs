@@ -10,9 +10,15 @@ using System.Linq;
 
 namespace Controllers.Test
 {
+    /// <summary>
+    /// Test class for sales controller.
+    /// </summary>
     [TestFixture]
     public class SalesControllerTests
     {
+        /// <summary>
+        /// Test for the function "MakeSale"
+        /// </summary>
         [Test]
         public void MakeSaleSavesASaleViaContext()
         {
@@ -37,6 +43,9 @@ namespace Controllers.Test
             mockSet.Verify(m => m.Add(It.IsAny<Sales>()), Times.Once());
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
         }
+        /// <summary>
+        /// Test for the function which returns all sales ever made.
+        /// </summary>
         [Test]
         public void GetAllSales()
         {
@@ -49,10 +58,14 @@ namespace Controllers.Test
 
 
             var mockSet = new Mock<DbSet<Sales>>();
-            mockSet.As<IQueryable<Sales>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Sales>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Sales>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Sales>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Sales>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Sales>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Sales>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Sales>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Sales).Returns(mockSet.Object);
@@ -66,22 +79,39 @@ namespace Controllers.Test
             Assert.AreEqual(8, salesFound[2].EmployeeId);
         }
 
+        /// <summary>
+        /// Test for the function which returns all sales made on the same date.
+        /// </summary>
         [Test]
         public void GetAllSalesOnTheSameDate()
         {
             var data = new List<Sales>
             {
-                new Sales { ClientId=2,EmployeeId=3,AnimalId=4, SaleDate= DateTime.Parse("2019-04-02") },
-                new Sales { ClientId=1,EmployeeId=7,AnimalId=5, SaleDate= DateTime.Parse("2019-04-02") },
-                new Sales { ClientId=4,EmployeeId=8,AnimalId=2, SaleDate= DateTime.Parse("2019-04-02") },
+                new Sales { ClientId=2,
+                            EmployeeId =3,
+                            AnimalId =4,
+                            SaleDate = DateTime.Parse("2019-04-02") },
+
+                new Sales { ClientId=1,
+                            EmployeeId =7,
+                            AnimalId =5,
+                            SaleDate = DateTime.Parse("2019-04-02") },
+                new Sales { ClientId=4,
+                            EmployeeId =8,
+                            AnimalId =2,
+                            SaleDate = DateTime.Parse("2019-04-02") },
             }.AsQueryable();
 
 
             var mockSet = new Mock<DbSet<Sales>>();
-            mockSet.As<IQueryable<Sales>>().Setup(m => m.Provider).Returns(data.Provider);
-            mockSet.As<IQueryable<Sales>>().Setup(m => m.Expression).Returns(data.Expression);
-            mockSet.As<IQueryable<Sales>>().Setup(m => m.ElementType).Returns(data.ElementType);
-            mockSet.As<IQueryable<Sales>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+            mockSet.As<IQueryable<Sales>>().Setup(m => m.Provider)
+                .Returns(data.Provider);
+            mockSet.As<IQueryable<Sales>>().Setup(m => m.Expression)
+                .Returns(data.Expression);
+            mockSet.As<IQueryable<Sales>>().Setup(m => m.ElementType)
+                .Returns(data.ElementType);
+            mockSet.As<IQueryable<Sales>>().Setup(m => m.GetEnumerator())
+                .Returns(data.GetEnumerator());
 
             var mockContext = new Mock<PetShopContext>();
             mockContext.Setup(s => s.Sales).Returns(mockSet.Object);

@@ -100,6 +100,13 @@ namespace PetShop.Data.Controllers
             }
         }
 
+        /// <summary>
+        /// Method to display all employees with salary more than
+        /// given number by the user.
+        /// </summary>
+        /// <param name="Salary">Takes arguement which will represent the lower
+        /// limit of salary where you search more than this limit.</param>
+        /// <returns></returns>
         public List<Employee> GetEmployeesWithSalaryMoreThan(decimal Salary)
         {
             List<Employee> result = new List<Employee>();

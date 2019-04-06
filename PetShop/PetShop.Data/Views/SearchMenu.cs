@@ -1,12 +1,17 @@
 ﻿using PetShop.Data.Views.SearchViews;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PetShop.Data.Views
 {
+    /// <summary>
+    /// Class for search menu.
+    /// </summary>
     public class SearchMenu
     {
+        /// <summary>
+        /// Function allowing the user to choose what they would
+        /// like to search
+        /// </summary>
 
         public static void Search()
         {
@@ -21,6 +26,9 @@ namespace PetShop.Data.Views
             } while (choice != 0);
         }
 
+        /// <summary>
+        /// Simple function displaying all search options
+        /// </summary>
         public static void DisplayMenu()
         {
             Console.WriteLine("SEARCH MENU");
@@ -31,7 +39,12 @@ namespace PetShop.Data.Views
             Console.WriteLine("5:Food");
             Console.WriteLine("0:Back");
         }
-
+        
+        /// <summary>
+        /// Function to redirect the user when they choose what they would like to search.
+        /// </summary>
+        /// <param name="menu">This arguement is given number by the user
+        /// in order to be used in switch construction </param>
         public static void Redirect(int menu)
         {
             switch (menu)
