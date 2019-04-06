@@ -55,31 +55,54 @@ namespace PetShop.Data.Views
                 case 1:
                     var employee = new Employee();
                     var employeeController = new EmployeeController();
-                    Console.WriteLine("Enter Name:");
+                    Console.Write("Enter Name: ");
                     employee.EmployeeName = Console.ReadLine();
-                    Console.WriteLine("Enter SSN:");
+                    Console.Write("Enter SSN: ");
                     employee.Ssn = Console.ReadLine();
-                    Console.WriteLine("Enter Salary:");
+                    Console.Write("Enter Salary: ");
                     employee.Salary = decimal.Parse(Console.ReadLine());
-                    Console.WriteLine("Enter Job Type:");
+                    Console.Write("Enter Job Type: ");
                     employee.JobType = Console.ReadLine();
                     Console.WriteLine("Please wait...");
                     employeeController.AddEmployee(employee);
                     break;
                 case 2:
                     var animal = new Animal();
+                    int invalidNumber = 1;
                     var animalController = new AnimalController();
-                    Console.WriteLine("Enter Specie:");
+                    var cController = new CageController();
+                    var fController = new FoodController();
+                    Console.Write("Enter Specie: ");
                     animal.Specie = Console.ReadLine();
-                    Console.WriteLine("Enter Breed:");
+                    Console.Write("Enter Breed: ");
                     animal.Breed = Console.ReadLine();
-                    Console.WriteLine("Enter Sex:");
+                    Console.Write("Enter Sex: ");
                     animal.Sex = Console.ReadLine();
-                    Console.WriteLine("Enter FoodID:");
-                    animal.FoodId = int.Parse(Console.ReadLine());
+                    Console.Write("Enter FoodID: ");
+                    var foods  = fController.GetAllFoods();
+                    do
+                    {
+                        animal.FoodId = int.Parse(Console.ReadLine());
+                        foreach (var f in foods)
+                        {
+                            if (f.Id == animal.FoodId) { invalidNumber = 0; };
+                        }
+                        if (invalidNumber == 1) { Console.Write("Invalid ID, please enter a new one: "); }
+                    } while (invalidNumber == 1);
+                    invalidNumber = 1;
                     animal.EntryDate = DateTime.Now;
-                    Console.WriteLine("Enter CageID:");
-                    animal.CageId = int.Parse(Console.ReadLine());
+                    Console.Write("Enter CageID: ");
+                    var cages = cController.GetAllCages();
+                    do
+                    {
+                        animal.CageId = int.Parse(Console.ReadLine());
+                        foreach (var c in cages)
+                        {
+                            if (c.Id == animal.CageId) { invalidNumber = 0; };
+                        }
+                        if (invalidNumber == 1) { Console.Write("Invalid ID, please enter a new one: "); }
+                    } while (invalidNumber == 1);
+                    invalidNumber = 1;
                     Console.WriteLine("Please wait...");
                     animalController.AddAnimal(animal);
                     break;

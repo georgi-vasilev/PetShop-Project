@@ -38,9 +38,24 @@ namespace PetShop.Data.Views.SearchViews
                 case 1:
                     Console.Write("Enter specie: ");
                     string specie = Console.ReadLine();
+                    Console.Write(String.Format("||{0,2}|", "Id"));
+                    Console.Write(String.Format("{0,15}|", "Breed"));
+                    Console.Write(String.Format("{0,3}|", "Sex"));
+                    Console.Write(String.Format("{0,11}|", "Date"));
+                    Console.Write(String.Format("{0,6}|", "FoodID"));
+                    Console.Write(String.Format("{0,6}||", "Cage"));
+                    Console.WriteLine();
+                    Console.WriteLine(new String('-', 52));
                     foreach (var a in animalController.SearchByTagsAnimal(specie,""))
                     {
-                        Console.WriteLine(a.Specie + "||" + a.Breed);
+                        Console.Write(String.Format("||{0,2}|", a.Id));
+                        Console.Write(String.Format("{0,15}|", a.Breed));
+                        Console.Write(String.Format("{0,3}|", a.Sex));
+                        Console.Write(String.Format("{0,11}|", a.EntryDate.ToString("dd/MM/yyyy")));
+                        Console.Write(String.Format("{0,6}|", a.FoodId));
+                        Console.Write(String.Format("{0,6}||", a.CageId));
+                        Console.WriteLine();
+                        Console.WriteLine(new String('-', 52));
                     };
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
@@ -48,9 +63,24 @@ namespace PetShop.Data.Views.SearchViews
                 case 2:
                     Console.Write("Enter specie: ");
                     string breed = Console.ReadLine();
+                    Console.Write(String.Format("||{0,2}|", "Id"));
+                    Console.Write(String.Format("{0,15}|", "Breed"));
+                    Console.Write(String.Format("{0,3}|", "Sex"));
+                    Console.Write(String.Format("{0,11}|", "Date"));
+                    Console.Write(String.Format("{0,6}|", "FoodID"));
+                    Console.Write(String.Format("{0,6}||", "Cage"));
+                    Console.WriteLine();
+                    Console.WriteLine(new String('-', 52));
                     foreach (var a in animalController.SearchByTagsAnimal("",breed))
                     {
-                        Console.WriteLine(a.Specie + "||" + a.Breed);
+                        Console.Write(String.Format("||{0,2}|", a.Id));
+                        Console.Write(String.Format("{0,15}|", a.Breed));
+                        Console.Write(String.Format("{0,3}|", a.Sex));
+                        Console.Write(String.Format("{0,11}|", a.EntryDate.ToString("dd/MM/yyyy")));
+                        Console.Write(String.Format("{0,6}|", a.FoodId));
+                        Console.Write(String.Format("{0,6}||", a.CageId));
+                        Console.WriteLine();
+                        Console.WriteLine(new String('-', 52));
                     };
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();

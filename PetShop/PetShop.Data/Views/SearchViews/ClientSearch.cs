@@ -39,9 +39,20 @@ namespace PetShop.Data.Views.SearchViews
                 case 1:
                     Console.Write("Enter name of client: ");
                     string name = Console.ReadLine();
-                    foreach (var e in clientController.SearchByTagsClient(name,"",""))
+                    Console.Write(String.Format("||{0,2}|", "Id"));
+                    Console.Write(String.Format("{0,15}|", "Client Name"));
+                    Console.Write(String.Format("{0,15}|", "Client Adress"));
+                    Console.Write(String.Format("{0,11}|", "SSN"));
+                    Console.WriteLine();
+                    Console.WriteLine(new String('-', 52));
+                    foreach (var c in clientController.SearchByTagsClient(name,"",""))
                     {
-                        Console.WriteLine(e.ClientName + "||" + e.ClientAddress);
+                        Console.Write(String.Format("||{0,2}|", c.Id));
+                        Console.Write(String.Format("{0,15}|", c.ClientName));
+                        Console.Write(String.Format("{0,15}|", c.ClientAddress));
+                        Console.Write(String.Format("{0,11}||", c.Ssn));
+                        Console.WriteLine();
+                        Console.WriteLine(new String('-', 50));
                     };
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
@@ -49,9 +60,20 @@ namespace PetShop.Data.Views.SearchViews
                 case 2:
                     Console.Write("Enter SSN of client: ");
                     string ssn = Console.ReadLine();
-                    foreach (var e in clientController.SearchByTagsClient("", ssn, ""))
+                    Console.Write(String.Format("||{0,2}|", "Id"));
+                    Console.Write(String.Format("{0,15}|", "Client Name"));
+                    Console.Write(String.Format("{0,15}|", "Client Adress"));
+                    Console.Write(String.Format("{0,11}||", "SSN"));
+                    Console.WriteLine();
+                    Console.WriteLine(new String('-', 50));
+                    foreach (var c in clientController.SearchByTagsClient("", ssn, ""))
                     {
-                        Console.WriteLine(e.ClientName + "||" + e.ClientAddress);
+                        Console.Write(String.Format("||{0,2}|", c.Id));
+                        Console.Write(String.Format("{0,15}|", c.ClientName));
+                        Console.Write(String.Format("{0,15}|", c.ClientAddress));
+                        Console.Write(String.Format("{0,11}||", c.Ssn));
+                        Console.WriteLine();
+                        Console.WriteLine(new String('-', 50));
                     };
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
@@ -59,9 +81,20 @@ namespace PetShop.Data.Views.SearchViews
                 case 3:
                     Console.Write("Enter adress of client: ");
                     string job = Console.ReadLine();
-                    foreach (var e in clientController.SearchByTagsClient("", "", job))
+                    Console.Write(String.Format("||{0,2}|", "Id"));
+                    Console.Write(String.Format("{0,15}|", "Client Name"));
+                    Console.Write(String.Format("{0,15}|", "Client Adress"));
+                    Console.Write(String.Format("{0,11}||", "SSN"));
+                    Console.WriteLine();
+                    Console.WriteLine(new String('-', 50));
+                    foreach (var c in clientController.SearchByTagsClient("", "", job))
                     {
-                        Console.WriteLine(e.ClientName + "||" + e.ClientAddress);
+                        Console.Write(String.Format("||{0,2}|", c.Id));
+                        Console.Write(String.Format("{0,15}|", c.ClientName));
+                        Console.Write(String.Format("{0,15}|", c.ClientAddress));
+                        Console.Write(String.Format("{0,11}||", c.Ssn));
+                        Console.WriteLine();
+                        Console.WriteLine(new String('-', 50));
                     };
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();

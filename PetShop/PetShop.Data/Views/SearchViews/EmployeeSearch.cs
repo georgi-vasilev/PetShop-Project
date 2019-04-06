@@ -39,9 +39,22 @@ namespace PetShop.Data.Views.SearchViews
                 case 1:
                     Console.Write("Enter name of employee: ");
                     string name = Console.ReadLine();
+                    Console.Write(String.Format("||{0,2}|", "Id"));
+                    Console.Write(String.Format("{0,15}|", "Employee Name"));
+                    Console.Write(String.Format("{0,11}|", "SSN"));
+                    Console.Write(String.Format("{0,7}|", "Salary"));
+                    Console.Write(String.Format("{0,9}|", "Job Type"));
+                    Console.WriteLine();
+                    Console.WriteLine(new String('-', 51));
                     foreach (var e in employeeController.SearchByTagsEmployee(name,"",""))
                     {
-                        Console.WriteLine(e.EmployeeName + "||" + e.Salary);
+                        Console.Write(String.Format("||{0,2}|", e.Id));
+                        Console.Write(String.Format("{0,15}|", e.EmployeeName));
+                        Console.Write(String.Format("{0,11}|", e.Ssn));
+                        Console.Write(String.Format("{0,7}|", e.Salary));
+                        Console.Write(String.Format("{0,9}|", e.JobType));
+                        Console.WriteLine();
+                        Console.WriteLine(new String('-', 51));
                     };
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
@@ -49,9 +62,22 @@ namespace PetShop.Data.Views.SearchViews
                 case 2:
                     Console.Write("Enter SSN of employee: ");
                     string ssn = Console.ReadLine();
+                    Console.Write(String.Format("||{0,2}|", "Id"));
+                    Console.Write(String.Format("{0,15}|", "Employee Name"));
+                    Console.Write(String.Format("{0,11}|", "SSN"));
+                    Console.Write(String.Format("{0,7}|", "Salary"));
+                    Console.Write(String.Format("{0,9}|", "Job Type"));
+                    Console.WriteLine();
+                    Console.WriteLine(new String('-', 51));
                     foreach (var e in employeeController.SearchByTagsEmployee("", ssn, ""))
                     {
-                        Console.WriteLine(e.EmployeeName + "||" + e.Salary);
+                        Console.Write(String.Format("||{0,2}|", e.Id));
+                        Console.Write(String.Format("{0,15}|", e.EmployeeName));
+                        Console.Write(String.Format("{0,11}|", e.Ssn));
+                        Console.Write(String.Format("{0,7}|", e.Salary));
+                        Console.Write(String.Format("{0,9}|", e.JobType));
+                        Console.WriteLine();
+                        Console.WriteLine(new String('-', 51));
                     };
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
@@ -59,9 +85,22 @@ namespace PetShop.Data.Views.SearchViews
                 case 3:
                     Console.Write("Enter job of employee: ");
                     string job = Console.ReadLine();
+                    Console.Write(String.Format("||{0,2}|", "Id"));
+                    Console.Write(String.Format("{0,15}|", "Employee Name"));
+                    Console.Write(String.Format("{0,11}|", "SSN"));
+                    Console.Write(String.Format("{0,7}|", "Salary"));
+                    Console.Write(String.Format("{0,9}|", "Job Type"));
+                    Console.WriteLine();
+                    Console.WriteLine(new String('-', 51));
                     foreach (var e in employeeController.SearchByTagsEmployee("", "", job))
                     {
-                        Console.WriteLine(e.EmployeeName + "||" + e.Salary);
+                        Console.Write(String.Format("||{0,2}|", e.Id));
+                        Console.Write(String.Format("{0,15}|", e.EmployeeName));
+                        Console.Write(String.Format("{0,11}|", e.Ssn));
+                        Console.Write(String.Format("{0,7}|", e.Salary));
+                        Console.Write(String.Format("{0,9}|", e.JobType));
+                        Console.WriteLine();
+                        Console.WriteLine(new String('-', 51));
                     };
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
