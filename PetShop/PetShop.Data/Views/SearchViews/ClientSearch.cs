@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PetShop.Data.Views.SearchViews
 {
-    public class EmployeeSearch
+    public class ClientSearch
     {
         public static void SearchBy()
         {
@@ -26,42 +26,42 @@ namespace PetShop.Data.Views.SearchViews
             Console.WriteLine("Search by:");
             Console.WriteLine("1:Name");
             Console.WriteLine("2:SSN");
-            Console.WriteLine("3:Job type");
+            Console.WriteLine("3:Adress");
             Console.WriteLine("0:Back");
         }
 
         public static void Redirect(int menu)
         {
-            var employee = new Employee();
-            var employeeController = new EmployeeController();
+            var client = new Client();
+            var clientController = new ClientController();
             switch (menu)
             {
                 case 1:
-                    Console.Write("Enter name of employee: ");
+                    Console.Write("Enter name of client: ");
                     string name = Console.ReadLine();
-                    foreach (var e in employeeController.SearchByTagsEmployee(name,"",""))
+                    foreach (var e in clientController.SearchByTagsClient(name,"",""))
                     {
-                        Console.WriteLine(e.EmployeeName + "||" + e.Salary);
+                        Console.WriteLine(e.ClientName + "||" + e.ClientAddress);
                     };
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
                     break;
                 case 2:
-                    Console.Write("Enter SSN of employee: ");
+                    Console.Write("Enter SSN of client: ");
                     string ssn = Console.ReadLine();
-                    foreach (var e in employeeController.SearchByTagsEmployee("", ssn, ""))
+                    foreach (var e in clientController.SearchByTagsClient("", ssn, ""))
                     {
-                        Console.WriteLine(e.EmployeeName + "||" + e.Salary);
+                        Console.WriteLine(e.ClientName + "||" + e.ClientAddress);
                     };
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();
                     break;
                 case 3:
-                    Console.Write("Enter job of employee: ");
+                    Console.Write("Enter adress of client: ");
                     string job = Console.ReadLine();
-                    foreach (var e in employeeController.SearchByTagsEmployee("", "", job))
+                    foreach (var e in clientController.SearchByTagsClient("", "", job))
                     {
-                        Console.WriteLine(e.EmployeeName + "||" + e.Salary);
+                        Console.WriteLine(e.ClientName + "||" + e.ClientAddress);
                     };
                     Console.WriteLine("Press enter to continue...");
                     Console.ReadLine();

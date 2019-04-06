@@ -39,6 +39,21 @@ namespace PetShop.Data.Views
                 case 1:
                     EmployeeSearch.SearchBy();
                     break;
+                case 2:
+                    AnimalSearch.SearchBy();
+                    break;
+                case 3:
+                    ClientSearch.SearchBy();
+                    break;
+                case 4:
+                    CageSearch.Search();
+                    break;
+                case 5:
+                    FoodSearch.Search();
+                    break;
+                default:
+                    Console.WriteLine("Invalid Number!");
+                    break;
             }
         }
     }

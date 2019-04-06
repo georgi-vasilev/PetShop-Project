@@ -86,7 +86,7 @@ namespace PetShop.Data.Controllers
         {
             using (petShopContext)
             {
-                return petShopContext.Animals.Where(x => x.Breed == breed && x.Specie == specie).ToList();
+                return petShopContext.Animals.Where(x => x.Breed == breed || x.Specie == specie).ToList();
 
             }
 

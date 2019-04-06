@@ -80,11 +80,11 @@ namespace PetShop.Data.Controllers
         /// <param name="clientName">Argumet that reads from the console the client name.</param>
         /// <param name="SSN">Argument that reads from the console the client SSN</param>
         /// <returns></returns>
-        public List<Client> SearchByTagsClient(string clientName, string SSN)
+        public List<Client> SearchByTagsClient(string clientName, string SSN, string adress)
         {
             using (petShopContext)
             {
-                return petShopContext.Clients.Where(x => x.ClientName == clientName && x.Ssn == SSN).ToList();
+                return petShopContext.Clients.Where(x => x.ClientName == clientName || x.Ssn == SSN || x.ClientAddress == adress).ToList();
             }
         }
 
