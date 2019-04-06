@@ -32,6 +32,12 @@ namespace PetShop.Data.Views
         /// </summary>
         public static void DisplayMenu()
         {
+            Console.WriteLine(" ______   ______     ______   ______     __  __     ______     ______  ");
+            Console.WriteLine("/\\  == \\ /\\  ___\\   /\\__  _\\ /\\  ___\\   /\\ \\_\\ \\   /\\  __ \\   /\\  == \\ ");
+            Console.WriteLine("\\ \\  _-/ \\ \\  __\\   \\/_/\\ \\/ \\ \\___  \\  \\ \\  __ \\  \\ \\ \\/\\ \\  \\ \\  _-/ ");
+            Console.WriteLine(" \\ \\_\\    \\ \\_____\\    \\ \\_\\  \\/\\_____\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\_\\   ");
+            Console.WriteLine("  \\/_/     \\/_____/     \\/_/   \\/_____/   \\/_/\\/_/   \\/_____/   \\/_/    ");
+            Console.WriteLine();
             Console.WriteLine("MAIN MENU");
             Console.WriteLine("1:Add");
             Console.WriteLine("2:Sale");
@@ -59,7 +65,7 @@ namespace PetShop.Data.Views
                     RemoveMenu.Remove();
                     break;
                 case 4:
-                    Console.WriteLine("Menu 4");
+                    SearchMenu.Search();
                     break;
                 default:
                     Console.WriteLine("Invalid Number!");

@@ -92,33 +92,22 @@ namespace PetShop.Data.Controllers
         /// <param name="employeeName">Argument which reads the employee name from the console</param>
         /// <param name="sSN">Argument which reads the ssn of the employee from the console.</param>
         /// <returns>Returns all found information using LINQ and Lambda</returns>
-        public List<Employee> SearchByTagsEmployee(string employeeName, string sSN)
+        public List<Employee> SearchByTagsEmployee(string employeeName, string sSN, string jobType)
         {
             using (petShopContext)
             {
-                return petShopContext.Employees.Where(x => x.EmployeeName == employeeName && x.Ssn == sSN).ToList();
+                return petShopContext.Employees.Where(x => x.EmployeeName == employeeName || x.Ssn == sSN || x.JobType == jobType).ToList();
             }
         }
 
-        public List<Employee> GetEmployeesWithSalaryMoreThan5h(string employeeName, decimal Salary)
-        {
-            List<Employee> result = new List<Employee>();
-            using (petShopContext)
-            {
-                result = petShopContext.Employees.Where(x => x.Salary >= 500).ToList();
-                return result;
-            }
-        }
-
-        public List<Employee> GetEmployeesWhoWorksAsVets(string employeeName, string jobType)
+        public List<Employee> GetEmployeesWithSalaryMoreThan(decimal Salary)
         {
             List<Employee> result = new List<Employee>();
             using (petShopContext)
             {
-                result = petShopContext.Employees.Where(x => x.JobType == "Vet").ToList();
+                result = petShopContext.Employees.Where(x => x.Salary >= Salary).ToList();
                 return result;
             }
         }
-
     }
 }
